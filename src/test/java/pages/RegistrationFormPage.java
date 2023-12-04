@@ -108,7 +108,7 @@ public class RegistrationFormPage {
         firstNameInput.shouldHave(cssValue("border-color", "rgb(220, 53, 69)"));
         return this;
     }
-    @Step("Проверка таблицы с введенными данными {key, value}")
+    @Step("Проверка таблицы с введенными данными")
     public RegistrationFormPage checkForm(String key, String value) {
         tableComponent.checkResult(key, value);
         return this;
