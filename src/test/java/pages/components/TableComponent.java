@@ -13,4 +13,5 @@ public class TableComponent {
     public void  checkResult (String key, String value) {
         tableResult.$(byText(key)).parent().shouldHave(text(value));
     }
+
 }
