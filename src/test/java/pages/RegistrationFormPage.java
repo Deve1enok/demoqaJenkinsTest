@@ -61,7 +61,7 @@ public class RegistrationFormPage {
         userNumber.setValue(value);
         return this;
     }
-    @Step("Выбрать дату рождения {day,month,year}")
+    @Step("Выбрать дату рождения {day} {month} {year}")
     public RegistrationFormPage setDateBirthday(String day, String month, String year) {
         calendarInput.click();
         calendarComponent.setValue(day, month, year);
