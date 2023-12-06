@@ -7,6 +7,7 @@ import helpers.Attach;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
 
 import java.util.Map;
@@ -26,9 +27,12 @@ public class BaseTest {
                 "enableVideo", true
         ));
         Configuration.browserCapabilities = capabilities;
-
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
     }
+        @BeforeEach
+        void beforeEach() {
+            SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+        }
+
     @AfterEach
     void addAttachments() {
         Attach.screenshotAs("Last screenshot");
@@ -37,7 +41,5 @@ public class BaseTest {
         Attach.addVideo();
 
         Selenide.closeWebDriver();
-        Selenide.clearBrowserLocalStorage();
-        Selenide.clearBrowserCookies();
     }
 }

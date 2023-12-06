@@ -1,19 +1,25 @@
 package tests;
 
 import com.codeborne.selenide.logevents.SelenideLogger;
+import io.qameta.allure.Feature;
 import io.qameta.allure.Step;
+import io.qameta.allure.Story;
 import io.qameta.allure.selenide.AllureSelenide;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import utils.DataUser;
 import pages.RegistrationFormPage;
 @Tag("demoqa_simple_test")
+@Feature("Форма регистрации студента DemoQa")
+@DisplayName("Заполнение формы регистрации студента DemoQa")
 public class RegistrationFormPageObjectTest extends BaseTest {
     RegistrationFormPage registrationPage = new RegistrationFormPage();
     DataUser fakerData = new DataUser();
 
     @Test
-    @Step("Позитивный тест на заполнение всех форм")
+    @DisplayName("Регистрация с валидными данными во всех полях")
+    @Story("Позитивный тест")
     void registrationForm() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
@@ -49,7 +55,8 @@ public class RegistrationFormPageObjectTest extends BaseTest {
                 .checkForm(fakerData.fieldStateAndCity, fakerData.getCity);
     }
     @Test
-    @Step("Позитивный тест на заполнение форм минимальными значениями")
+    @DisplayName("Регистрация с минимально допустимыми значениями в допустимых полях")
+    @Story("Позитивный тест")
     void minimalFieldsData() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
@@ -68,7 +75,8 @@ public class RegistrationFormPageObjectTest extends BaseTest {
 
     }
     @Test
-    @Step("Негативный тест при пустом поле имя")
+    @DisplayName("Регистрация с пустым полем \"имя\"")
+    @Story("Негативный тест")
     void negativeTestData() {
         SelenideLogger.addListener("allure", new AllureSelenide());
 
